@@ -1,0 +1,8 @@
+#!/bin/sh
+# Runs after the Epitome package is installed: link the command-line search tool.
+# $3 is the volume the package was installed on.
+if [ "$3" = "/" ] && [ -x "/Applications/Epitome.app/Contents/Helpers/ep" ]; then
+  mkdir -p /usr/local/bin
+  ln -sf "/Applications/Epitome.app/Contents/Helpers/ep" /usr/local/bin/ep
+fi
+exit 0

@@ -1,0 +1,11 @@
+# SwiftPM and build output
+.build/
+build/
+.swiftpm/
+Package.resolved
+
+# Local build-request folder
+.inbox/
+
+# macOS
+.DS_Store

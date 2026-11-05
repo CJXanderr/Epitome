@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Epitome Help</title><link rel="stylesheet" href="style.css"></head><body><nav><a href="index.html">Overview</a><a href="syntax.html">Search Syntax</a><a href="regex.html">Regex</a><a href="cmdline.html">Command Line</a><a href="license.html">About</a></nav>
+<h1>Epitome</h1>
+<p class="lead">Instant file-name search for your Mac. Epitome indexes the names of every file and folder on your disks, keeps the index current as files change, and shows matches while you type.</p>
+<div class="tip">Click any example in these pages to run it in the front search window.</div>
+<h2>Searching</h2>
+<p>Type part of a name: <a class="ex" href="epitome:invoice" title="Search for this">invoice</a> finds every item whose name contains “invoice”. Several words must all match, in any order: <a class="ex" href="epitome:invoice%202026%20pdf" title="Search for this">invoice 2026 pdf</a>. Use <code>|</code> for “or”, <code>!</code> for “not”, <code>&lt; &gt;</code> to group and quotes for exact text with spaces: <a class="ex" href="epitome:%22tax%20return%22%20&lt;pdf|docx&gt;%20!draft" title="Search for this">&quot;tax return&quot; &lt;pdf|docx&gt; !draft</a>.</p>
+<p>A word containing a slash matches the full path: <a class="ex" href="epitome:Projects/%20swift" title="Search for this">Projects/ swift</a> finds Swift files in any folder called Projects. Functions narrow by other properties — <a class="ex" href="epitome:ext:jpg;png%20size:&gt;2mb%20dm:thisyear" title="Search for this">ext:jpg;png size:&gt;2mb dm:thisyear</a>. The <a href="syntax.html">Search Syntax</a> page lists everything.</p>
+<h3>The window</h3>
+<ul>
+<li><b>Filter bar</b> (right of the search box) restricts results to Audio, Documents, Pictures and so on without changing what you typed. Edit filters with Search → Organize Filters.</li>
+<li><b>Columns</b>: right-click the header to show Extension, Type, dates, Attributes, Run Count and more; click a header to sort (dates and sizes start newest/largest first).</li>
+<li><b>Views</b>: Details or thumbnails (View menu); <b>Preview</b> (⌥⌘P) shows the selected file beside the list; Space opens Quick Look.</li>
+<li><b>Status bar</b> shows the result count, the selection’s size, and indicators such as CASE, PATH or REGEX for active options — double-click an indicator to turn it off.</li>
+</ul>
+<h3>Working with results</h3>
+<table><tr><th>Keys</th><th>Action</th></tr><tr><td>Return</td><td>In the search box: select the result you open most often. In the list: open the selection.</td></tr><tr><td>⌘↓ · double-click</td><td>Open</td></tr><tr><td>⌘R · ⌘Return</td><td>Show in Finder</td></tr><tr><td>⌘I · ⌥Return</td><td>Get Info</td></tr><tr><td>F2</td><td>Rename (several items: the multi-file rename dialog)</td></tr><tr><td>⌘⌫ / ⌥⌘⌫</td><td>Move to Trash / delete immediately</td></tr><tr><td>⌘C / ⌥⌘C</td><td>Copy the files / copy their full paths as text</td></tr><tr><td>Space</td><td>Quick Look</td></tr><tr><td>Tab</td><td>Switch between the search box and the list</td></tr><tr><td>typing in the list</td><td>Jump to the next name starting with what you type</td></tr><tr><td>⌘[ / ⌘]</td><td>Back / forward through previous searches</td></tr><tr><td>⇧⌘H</td><td>Home search</td></tr><tr><td>⌘D</td><td>Bookmark the search</td></tr><tr><td>⌘1 … ⌘9</td><td>Sort by name, path, size, extension, type, date modified, date created, attributes, recently changed</td></tr><tr><td>⌃⌘1 … ⌃⌘4</td><td>Details, medium, large, extra-large thumbnails</td></tr><tr><td>⌘= / ⌘- / ⌘0</td><td>Larger / smaller / normal text</td></tr></table>
+<p class="note">Every menu command can get a different shortcut in Settings → Keyboard, which also sets system-wide hotkeys to show Epitome from any app.</p>
+<h2>The index</h2>
+<p>On first launch Epitome reads every included volume (Settings → Volumes). After that it follows changes through macOS file system events, and remembers where it left off, so changes made while Epitome wasn’t running are caught up at the next start. The index is saved to disk regularly and when you quit.</p>
+<ul>
+<li><b>Full Disk Access</b> (System Settings → Privacy &amp; Security) lets Epitome include protected folders such as Mail and Messages data. Without it those folders are skipped.</li>
+<li><b>Folders</b> outside your volumes (for example network shares) and <b>file lists</b> (.efu) can be added in Settings.</li>
+<li><b>Exclude</b> hidden files, system files or any folders and file patterns you never want to see.</li>
+<li>Tools → <b>Index Journal</b> lists recent changes (created, deleted, renamed, modified); Tools → Indexes → <b>Statistics</b> shows what is indexed.</li>
+</ul>
+<h2>Filters, bookmarks and history</h2>
+<p><b>Filters</b> are saved searches combined with whatever you type; each can have a macro — <a class="ex" href="epitome:audio:%20live" title="Search for this">audio: live</a> — and a shortcut. <b>Bookmarks</b> (⌘D) restore a whole search: text, options, filter, sort and view. <b>Search history</b> (off by default, Settings → History) suggests earlier searches when you press ⌥Esc in the search box; <b>run history</b> counts how often you open items from Epitome — sort by Run Count or search <a class="ex" href="epitome:runcount:&gt;5" title="Search for this">runcount:&gt;5</a>.</p>
+<h2>File lists</h2>
+<p>A file list (.efu, a CSV of paths, sizes, dates and attributes) is a snapshot you can search later or on another Mac — for example of an external drive that isn’t connected. Create one with Tools → Create File List from Folder, File → Export (choose EFU), or the File List Editor; open one with File → Open File List (⌘O).</p>
+<h2>Searching other computers</h2>
+<p>Turn on the <b>HTTP server</b> to search this Mac from any browser, or the <b>ETP/FTP server</b> so another copy of Epitome can connect with Tools → Connect to ETP Server. Both can require a user name and password and can be limited to certain network interfaces.</p>
+<h2>Search commands</h2>
+<p>Typed into the search box and run with Return: <code>&gt;rebuild</code> (rebuild the index), <code>&gt;update</code> or <code>&gt;update ~/Folder</code> (rescan), <code>&gt;pause</code> / <code>&gt;resume</code> (monitoring), <code>&gt;save-db</code>, <code>&gt;new-window</code>, <code>&gt;close</code>, <code>&gt;closeall</code>, <code>&gt;quit</code>, <code>&gt;restart</code>, <code>&gt;debug</code>, <code>&gt;options</code>, <code>&gt;config_save</code>, <code>&gt;config_load</code>, <code>about:</code>, <code>about:config</code>, <code>about:home</code>. <code>&gt;setting</code> shows a setting and <code>&gt;setting=value</code> changes it (Tab completes names) — for example <code>&gt;searchDelayMs=150</code>.</p>
+</body></html>
